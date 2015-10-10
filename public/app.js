@@ -1,16 +1,24 @@
-var app = angular.module('contactListApp', [])
-app.controller('ContactListController', function($scope){
-  $scope.names = ['Wanderley', 'Murilo', 'Pedro'];
-
-  $scope.newName = '';
-
-  $scope.add = function(){
-    $scope.names.push($scope.newName);
-    $scope.newName = '';
-  }
-  
-  $scope.remove = function(name){
-    $scope.names.splice($scope.names.indexOf(name), 1);
-  }
+angular.module('contactListApp', [
+  'ui.mask',
+  'ngRoute',
+  'customFilters'
+])
+.config(function($routeProvider){
+  $routeProvider
+    .when('/contacts', {
+      templateUrl: 'views/contact-list.html',
+      controller: 'ContactListController'
+    })
+    .when('/contacts/new', {
+      templateUrl: 'views/contact-form.html',
+      controller: 'ContactFormController'
+    })
+    .when('/contacts/edit/:id', {
+      templateUrl: 'views/contact-form.html',
+      controller: 'ContactFormController'
+    })
+    .otherwise({ redirectTo: '/contacts' });
+})
+.run(function(){
 
 });

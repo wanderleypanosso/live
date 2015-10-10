@@ -14,7 +14,7 @@
       <script src="assets/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body ng-controller="ContactListController">
+  <body>
     <nav class="navbar navbar-inverse" role="navigation">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -30,18 +30,12 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="navbar">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#"></a></li>
+            <li><a href="#/">Contacts</a></li>
+
 
           </ul>
-          <form class="navbar-form navbar-left" role="search">
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Search">
-            </div>
-            <button type="submit" class="btn btn-default">Submit</button>
-          </form>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#"></a></li>
+            <li><a href="#/contacts/new">New Contact</a></li>
 
           </ul>
         </div><!-- /.navbar-collapse -->
@@ -49,52 +43,19 @@
     </nav>
 
     <div class="container">
-      <div class="row">
-        <div class="col-md-6">
-          <div class="input-group">
-            <span class="input-group-addon"> Name</span>
-            <input type="text" class="form-control" placeholder="" ng-model="newName">
-          </div>
-          <div class="input-group">
-            <button ng-click="add()" type="button" class="btn btn-success">
-            Add
-          </button>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="input-group">
-            <span class="input-group-addon">Search</span>
-            <input ng-model="searchText" type="text" class="form-control" placeholder="">
-
-          </div>
-          <h1>People</h1>
-        </div>
-      </div>
-      <div class="row">
-        <div ng-repeat="name in names | filter: searchText | orderBy" class="col-md-4">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h3 class="panel-title">{{name}}</h3>
-            </div>
-            <div class="panel-body">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </div>
-            <div class="panel-footer">
-              <div class="input-group">
-                <button ng-click="remove(name)" type="button" class="btn btn-danger">
-                  Remove
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div ng-view></div>
     </div>
     <script src="assets/jquery.min.js"></script>
     <script src="assets/bootstrap.min.js"></script>
     <script src="assets/angular.min.js" charset="utf-8"></script>
+
+    <script src="assets/mask.min.js" charset="utf-8"></script>
+    <script src="assets/angular-route.min.js" charset="utf-8"></script>
     <script src="app.js" charset="utf-8"></script>
+    <script src="services/contacts.store.js" charset="utf-8"></script>
+    <script src="controllers/contact.list.js" charset="utf-8"></script>
+    <script src="controllers/contact.form.js" charset="utf-8"></script>
+    <script src="filters/phone.js" charset="utf-8"></script>
+
   </body>
 </html>

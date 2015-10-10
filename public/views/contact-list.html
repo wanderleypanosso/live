@@ -1,0 +1,40 @@
+<div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="input-group">
+        <span class="input-group-addon">Search</span>
+        <input ng-model="search" type="text" class="form-control" placeholder="">
+      </div>
+      <h1>People</h1>
+    </div>
+  </div>
+
+<div class="row">
+  <div ng-repeat="contact in contacts | filter: search | orderBy" class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">{{contact.name}}</h3>
+      </div>
+      <div class="panel-body">
+        <p>
+          <strong>Phone: </strong> {{contact.phone | phone: '(99)9999-99999'}}
+        </p>
+        <p ng-if="contact.email">
+          <strong>Email: </strong> {{contact.email}}
+        </p>
+        <p ng-show="contact.address">
+          <strong>Address: </strong> {{contact.address}}
+        </p>
+      </div>
+      <div class="panel-footer">
+        <div class="input-group">
+          <button ng-click="doRemove(contact)" type="button" class="btn btn-danger">
+            Remove
+          </button>
+          <a ng-href="#/contacts/edit/{{contact._id}}" class="btn btn-info">Edit</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
